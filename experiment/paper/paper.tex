@@ -1,0 +1,454 @@
+% \documentclass[pra,showpacs,groupedaddress,notitlepage,superscriptaddress,floatfix,nofootinbib]{revtex4-2}
+\documentclass[
+    pra,
+    showpacs,
+    groupedaddress,
+    notitlepage,
+    floatfix,
+    nofootinbib
+]{revtex4-2}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype}
+
+
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{braket}%Dirac Notation in QM
+\usepackage{cases}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{graphicx,subfigure}% hy77 Include figure files
+%\usepackage{graphics}
+\usepackage{multirow}
+\usepackage{placeins}
+\usepackage{float}
+%\usepackage{lipsum}
+%\usepackage{framed}
+%\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{bm}% bold math
+%Load hyperref last to avoid wrong equation referencing in the text
+% \usepackage{hyperref}
+\usepackage[hidelinks]{hyperref}
+
+\hypersetup{
+    pdftitle={Reduced Dynamics of a Qubit Coupled to a Coherent Spectator},
+    pdfauthor={Jai Veilleux},
+    colorlinks=true,
+    linkcolor=cyan!45!black,
+    citecolor=magenta!65!black,
+    filecolor=magenta!65!black,
+    urlcolor=cyan!45!black,
+    runcolor=cyan!45!black
+}
+\usepackage[capitalise]{cleveref}
+\usepackage{booktabs} 
+
+\newtheorem{mytheorem}{Theorem}
+\newtheorem{mylemma}{Lemma}
+\newtheorem{mycorollary}{Corollary}
+\newtheorem{myproposition}{Proposition}
+\newtheorem{myclaim}{Claim}
+\newtheorem{mydefinition}{Definition}
+\newtheorem{myassumption}{Assumption}
+
+\newcommand{\ignore}[1]{}
+
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\cyan}[1]{\textcolor{cyan}{#1}}
+\newcommand{\green}[1]{\textcolor{green}{#1}}
+\newcommand{\magenta}[1]{\textcolor{magenta}{#1}}
+
+\newcommand{\eps} {\varepsilon}
+\newcommand{\epstot} {\eps_{\mathrm{tot}}}
+\newcommand{\epserr} {\eps_{\mathrm{err}}}
+\newcommand{\delerr} {\Delta_{\mathrm{err}}}
+\newcommand{\therr}{\theta_{\mathrm{err}}}
+\newcommand{\dphi}{\delta\varphi}
+\newcommand{\dth}{\delta\theta}
+\newcommand{\Herr}{H_{\mathrm{err}}}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\Ugrp}{\mathsf{U}}
+\newcommand{\ave}[1]{\<{#1}\>}
+
+
+\usepackage{commath}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{adjustbox}
+\usepackage[normalem]{ulem}
+
+
+\newcommand{\bes} {\begin{subequations}}
+\newcommand{\ees} {\end{subequations}}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+
+\def\a{\alpha}
+\def\b{\beta}
+\def\g{\gamma}
+\def\d{\delta}
+\def\e{\epsilon}
+\def\ve{\varepsilon}
+\def\z{\zeta}
+\def\h{\eta}
+\def\t{\theta}
+\def\k{\kappa}
+\def\m{\mu}
+\def\n{\nu}
+\def\x{\xi}
+\def\p{\pi}
+\def\r{\rho}     %%%% IMPORTANT TEx NOTE: THE REDEFINITION FOR '\r' BREAKS THE ANGSTROM SYMBOL
+\def\s{XY4}
+\def\ta{\tau}
+\def\u{\upsilon}
+\def\ph{\varphi}
+\def\c{\chi}
+\def\ps{\Psi}
+\def\o{\omega}
+
+\def\G{\Gamma}
+\def\D{\Delta}
+\def\T{\Theta}
+\def\L{\Lambda}
+\def\x{\xi}
+\def\P{\Pi}
+\def\S{XY4}
+\def\U{\Upsilon}
+\def\Ph{\Phi}
+\def\Ps{\chi}
+\def\O{\Omega}
+
+%Some helpful quantum shortcuts
+\def\ox{\otimes}
+\def\>{\rangle}
+\def\<{\langle}
+\def\Tr{\mathrm{Tr}}
+\def\Pr{\mathrm{Pr}}
+\newcommand{\ketbra}[1]{|{#1}\>\!\<#1|}
+\newcommand{\bracket}[1]{\<{#1}|{#1}\>}
+\newcommand{\bk}[2]{\<{#1}|{#2}\>}
+\newcommand{\brak}[2]{\<{#1}|{#2}\>}
+\newcommand{\ketb}[2]{|{#1}\>\!\<#2|}
+\newcommand{\ketbsub}[3]{|{#1}\>_{#3}\<#2|}
+\newcommand{\ident}{\mathbb{}}
+\newcommand{\on}[1]{\|#1\|}
+\def\XY4{\text{XY}4}
+
+\newcommand{\dd}{\,d}
+\newcommand{\id}{\mathbb{I}}
+\newcommand{\Ls}{\mathcal{L}}
+\newcommand{\Diss}{\mathcal{D}}
+\newcommand{\rhoS}{\rho_S}
+\newcommand{\rhoB}{\rho_B}
+\newcommand{\rhoSB}{\rho_{SB}}
+\newcommand{\sx}{\sigma_x}
+\newcommand{\sy}{\sigma_y}
+\newcommand{\sz}{\sigma_z}
+\newcommand{\spm}{\sigma_+}
+\newcommand{\smm}{\sigma_-}
+
+\newcommand{\sminus}{s_{-}}
+\newcommand{\splus}{s_{+}}
+
+\begin{document}
+\title{Reduced Dynamics of a Qubit Coupled to a Coherent Spectator}
+\author{Jai Veilleux}
+\affiliation{University of Southern California}
+
+\begin{abstract}
+I measure the reduced dynamics of a central qubit coupled by repeated partial exchange to one spectator on IBM Quantum. 
+For a spectator initialized in its ground state, the programmed circuit fixes the exact reduced-channel amplitude 
+$a(n)=\cos(n\theta)$, including a phase reversal at the first return. I derive the exact Nakajima--Zwanzig memory kernel, 
+the second- and fourth-order time-local predictions, and the conditions for a Markov limit. Both no-reset angle sweeps exhibit 
+an increase in trace distance between the ground- and excited-input trajectories from the first ideal transfer to the first ideal 
+return. In three jobs the increase is $0.753$--$0.781$ for the larger block angle and $0.618$--$0.656$ for the smaller angle. 
+In the spectator-reset control, the distance decreases by $0.115$--$0.178$. Tomography of a plus-state input also resolves the 
+sign change of the recovered coherence. I compare the observations with predictions set by the circuit angle and with a model 
+using independently reported hardware relaxation and dephasing times. 
+% No model parameters are estimated from the measured trajectories.
+\end{abstract}
+\maketitle
+
+\section{Introduction}
+An open system is described by tracing out environmental degrees of freedom from a joint evolution. 
+An environment that retains an excitation can influence later system dynamics. A reservoir with sufficiently 
+short-lived correlations can under suitable conditions yield a time-homogeneous, completely positive, trace-preserving semigroup, 
+whose generator has Gorini--Kossakowski--Sudarshan--Lindblad form \cite{breuer,lidar,gorini,lindblad}. Undriven zero-temperature 
+amplitude damping with a constant rate is one example. Its excited-state population falls exponentially, while the coherence falls 
+at half the population rate.
+
+A single spectator qubit gives a finite environment with an exact circuit-derived channel. As long as the spectator is retained, 
+a later exchange operation can transfer an earlier excitation back to the system. Resetting the spectator instead implements a 
+sequence of fresh-ancilla interactions. Collisional models of open-system dynamics and environmental memory have been demonstrated 
+on IBM processors \cite{garcia}. Here I use the same exchange circuit to test both regimes on one physical qubit pair and to 
+separate predictions for population, coherence, and the distinguishability of different initial states.
+
+A return in population for one input supports the exchange picture. To test a channel property, I also compare the evolving states 
+of two different preparations. A completely positive divisible family cannot recover trace distance between two states after it has 
+reduced their distinguishability \cite{rivas,blp}. The experiment therefore follows ground and excited inputs across the first 
+transfer and return, and uses a plus input to test the phase of the recovered coherence. These tests use fixed circuit and calibration parameters.
+
+\section{Theory and Models}
+\subsection{Partial exchange and reduced channel}
+Let $S$ denote the central qubit and $B$ the spectator. Set $\hbar=1$ and $Z=\ket0\bra0-\ket1\bra1$. The free 
+Hamiltonian $H_j=\omega_j\ket1_j\bra1$ places $\ket1$ at higher energy. With $\sigma_-=\ket0\bra1=(X+iY)/2$ and 
+$\sigma_+=\sigma_-^\dagger$, the ideal two-qubit Hamiltonian is $H_{\mathrm{tot}}=H_S+H_B+H_{\mathrm{ex}}$, with
+\begin{equation}
+ H_{\mathrm{ex}}=g(\sigma_+^S\sigma_-^B+\sigma_-^S\sigma_+^B)
+ =\tfrac{g}{2}(X_S X_B+Y_S Y_B).
+ \label{eq:h}
+\end{equation}
+The ideal model starts each circuit in $\rho_{SB}(0)=\rho_S(0)\otimes(\ket0\bra0)_B$ and describes the central qubit by
+$\rho_S=\Tr_B\rho_{SB}$. The spectator is the modeled environment. The calibrated model in Sec.~\ref{sec:calibrated-model}
+adds local device noise to the two-qubit evolution.
+
+Each block applies $R_{XX}(\theta)$ and then $R_{YY}(\theta)$, where 
+$R_{PP}(\theta)=\exp(-i\theta P\otimes P/2)$. The generators commute. Their sum acts as $2X$ on $\{\ket{10},\ket{01}\}$ 
+in system--spectator order, and vanishes on $\{\ket{00},\ket{11}\}$. For $u=n\theta$ the no-reset evolution with input $\ket{10}$ is
+\begin{equation}
+ U_\theta^n\ket{10}
+ =\cos u\,\ket{10}-i\sin u\,\ket{01}.
+ \label{eq:exchange}
+\end{equation}
+
+\begin{samepage}
+For arbitrary system state $\rho$ with an uncorrelated ground-state spectator, 
+the Kraus operators are $K_0=\ket0\bra0+a\ket1\bra1$ and $K_1=-i\sin u\,\ket0\bra1$, where $a=\cos u$ \cite{nielsen}. The reduced map is
+\begin{equation}
+ \Phi_u(\rho)=
+ \begin{pmatrix}
+ \rho_{00}+(1-|a|^2)\rho_{11}&a^*\rho_{01}\\
+ a\rho_{10}&|a|^2\rho_{11}
+ \end{pmatrix}.
+ \label{eq:channel}
+\end{equation}
+\end{samepage}
+The excited-input population is $\cos^2u$. The ground input stays fixed, so the trace distance between the 
+two outputs is also $\cos^2u$. The plus input $(\ket0+\ket1)/\sqrt2$ gives $\langle X\rangle=\cos u$. At $u=\pi/2$ 
+the map sends every input to the ground state. At $u=\pi$ it recovers the population and reverses the sign of the plus-state coherence. 
+Since one intermediate state cannot be mapped to two distinguishable final states by a common channel, the ideal family is not 
+CP divisible across that interval \cite{rivas,blp}.
+
+\subsection{Exact memory kernels}
+For the continuous Hamiltonian surrogate, use the Bohr-frequency convention
+\begin{equation}
+ A(t)=\sum_\omega e^{-i\omega t}A_\omega,\qquad
+ A_\omega=\sum_{\epsilon_b-\epsilon_a=\omega}\Pi_a A\Pi_b,
+\end{equation}
+where $\Pi_a$ projects onto the energy eigenspace $\epsilon_a$ \cite{breuer,lidar}. Thus $\sigma_-^j(t)=e^{-i\omega_jt}\sigma_-^j$ and the
+exchange terms oscillate at the difference frequency $\Delta=\omega_B-\omega_S$. The interaction-picture amplitudes obey
+$i\dot a=g e^{-i\Delta t}b$ and $i\dot b=g e^{i\Delta t}a$. Eliminating $b$ with $b(0)=0$ gives
+\begin{equation}
+ \dot a(t)=-\int_0^t C(t-s)a(s)\,ds,\qquad C(t)=g^2 e^{-i\Delta t}.
+ \label{eq:volterra}
+\end{equation}
+The free spectator ground state is stationary, so its correlation depends on the time difference. The kernel follows from
+$g^2\langle\sigma_-^B(t)\sigma_+^B(0)\rangle_0=g^2e^{-i\omega_Bt}$ in the frame rotating at the system frequency.
+On resonance, $\ddot a=-g^2 a$ with $a(0)=1$ and $\dot a(0)=0$, so $a(t)=\cos(gt)$. Comparing to Eq.~\eqref{eq:exchange} identifies 
+the ideal angle $u=gt$. The schedule of a gate decomposition supplies a circuit duration and does not measure a continuous exchange coupling.
+
+The coherence obeys the same convolution as $a$. The population has a separate kernel, found by taking the Laplace transform of 
+$p_1(t)=\cos^2(gt)p_1(0)$:
+\begin{equation}
+ \widetilde f(s)=\frac{s^2+2g^2}{s(s^2+4g^2)},\qquad
+ \widetilde K_p(s)=\frac{1}{\widetilde f(s)}-s
+                 =\frac{2g^2s}{s^2+2g^2}.
+\end{equation}
+Thus $K_p(t)=2g^2\cos(\sqrt2\,gt)$. With $P_1=\ket1\bra1$ and $\Diss[L]\rho=L\rho L^\dagger-\frac12\{L^\dagger L,\rho\}$, 
+the density-operator Nakajima--Zwanzig equation at resonance is
+\begin{align}
+ \dot\rho(t)&=\int_0^t \mathcal K(t-s)\rho(s)\,ds,\nonumber\\
+ \mathcal K(t)\rho&=K_p(t)\Diss[\sigma_-]\rho
+                   +[2C(t)-K_p(t)]\Diss[P_1]\rho.
+ \label{eq:nz}
+\end{align}
+The first term propagates the population by $-K_p*p_1$, while both terms together give the coherence kernel $-C*\rho_{10}$. 
+This distinguishes the operator equation from the scalar amplitude equation and keeps the memory equation regular at $a=0$ \cite{vacchini}.
+
+\subsection{Time-local expansion from the spectator correlation}
+The time-convolutionless (TCL) approach expands a time-local generator in powers of the coupling \cite{breuer,lidar}. Where $\cos(gt)\ne0$, 
+the exact resonant generator is $\dot\rho=\gamma(t)\Diss[\sigma_-]\rho$ with $\gamma=-2\dot a/a=2g\tan(gt)$. The expansion at fixed $t$ gives
+\begin{equation}
+ \gamma_2=2g^2t,\qquad \gamma_4=2g^2t+2g^4t^3/3.
+ \label{eq:rates}
+\end{equation}
+Integrating gives $p_1^{(2)}(u)=e^{-u^2}$ and $p_1^{(4)}(u)=e^{-u^2-u^4/6}$ for the excited input. The corresponding coherence factors are 
+the positive square roots of these expressions on the near-origin branch. The derivation directly from Eq.~\eqref{eq:volterra} is in 
+Appendix~\ref{app:tcl}. The exact rate has its first pole at $u=\pi/2$ and is negative on the subsequent return interval. Both truncated 
+rates are positive for $t>0$ and describe the early regime. The expansion parameter is the accumulated angle $u=n\theta$. A smaller block angle
+samples the early regime more finely, and both sweeps reach $u=\pi$. I score the expansions through $u=\pi/4$ using the same points for the exact channel.
+
+\subsection{Markov limit and reset control}
+The second-order cumulant master equation (C-ME) uses a coarse-graining window $T$ to average bath correlations while the system state changes
+little over that window. The usual hierarchy is \cite{breuer,lidar}
+\begin{equation}
+ \tau_B\ll T\ll\tau_S,
+ \label{eq:coarse-graining}
+\end{equation}
+where $\tau_B$ is the decay time of the bath correlation and $\tau_S$ is the timescale of appreciable change in the reduced state.
+The window $T$ is an averaging time in the reduced theory. The block duration is set by the gate schedule. For a stationary bath
+and a single decay channel, the coarse-grained population rate is
+\begin{equation}
+ \Gamma_T=\frac{2}{T}\mathrm{Re}\!\int_0^T (T-s)C(s)\,ds.
+ \label{eq:coarse-grained-rate}
+\end{equation}
+When $C(s)$ decays on the scale $\tau_B$, choosing $T\gg\tau_B$ lets this rate approach $2\,\mathrm{Re}\int_0^\infty C(s)\,ds$.
+For the resonant undamped spectator,
+$C(s)=g^2$ for all $s$. Its correlation has no finite decay time, so Eq.~\eqref{eq:coarse-graining} has no admissible window. The Markov integral
+$\int_0^\infty C(s)\,ds$ diverges and Eq.~\eqref{eq:coarse-grained-rate} gives $\Gamma_T=g^2T$.
+
+In the secular or rotating-wave approximation to the reduced master equation, terms with distinct Bohr frequencies average out when
+$|\omega-\omega'|T\gg1$. The diagonal contribution at $\omega=\omega'$ remains, so this averaging leaves the resonant correlation in
+Eq.~\eqref{eq:volterra} intact \cite{breuer,lidar}. If spectator amplitude damps independently at rate $\kappa>0$, the modified correlation
+$g^2e^{-(\kappa+i\Delta)t}$ has a decay time $\tau_B=1/\kappa$ and yields a population rate
+\begin{equation}
+ \Gamma_{\mathrm M}=2\,\mathrm{Re}\frac{g^2}{\kappa+i\Delta}
+                   =\frac{2g^2\kappa}{\kappa^2+\Delta^2}
+\end{equation}
+in a Markov regime. Replacing $a(s)$ by $a(t)$ in Eq.~\eqref{eq:volterra} and extending the integral to infinity gives 
+$\dot a=-g^2a/(\kappa+i\Delta)$. The corresponding secular amplitude-damping generator is 
+$\Gamma_{\mathrm M}\Diss[\sigma_-]\rho-i[\mathrm{Im}(g^2/(\kappa+i\Delta))P_1,\rho]$. This approximation assumes slow system evolution 
+over the correlation time, as when $g\ll\kappa$ on resonance. Pure spectator energy relaxation would give $\kappa=(2T_{1,B})^{-1}$ in this model. 
+The hardware control uses a reset to realize memoryless exchange directly.
+
+The ideal reset replaces the spectator by $\ket0$ after every block. The system undergoes repeated applications of $\Phi_\theta$, 
+with amplitude $a_{\mathrm{reset}}(n)=(\cos\theta)^n$. This is a discrete amplitude-damping semigroup with population rate $-2\log(\cos\theta)$ 
+per block for the programmed positive cosines. For $\theta=\pi/4$ the fourth-block predictions are $p_1=1/16$ for the excited input and 
+$\langle X\rangle=+1/4$ for the plus input. The corresponding no-reset predictions are $p_1=1$ and $\langle X\rangle=-1$.
+
+\section{Experimental Design}
+\subsection{Circuits and job design}
+I used IBM Fez with physical qubit 131 as the central qubit and 132 as the spectator. Each circuit initializes the pair, prepares the central 
+qubit in $\ket0$, $\ket1$, or $\ket+$, applies a chosen number of exchange blocks and measures the central qubit in one Pauli basis. The $X$ and $Y$ 
+bases use $H$ and $HS^\dagger$ immediately before computational-basis measurement \cite{tomography}. Circuits were compiled and scheduled with Qiskit 2.3.0 and
+submitted through Qiskit Runtime 0.45.0 using SamplerV2 \cite{ibmsampler}. I compiled with a fixed physical layout and barriers at the
+exchange boundaries. The compiled exchange-window timing agrees across preparations and measurement bases for each sweep and block count.
+
+The $\theta=\pi/16$ sweep uses $n=0,1,2,3,4,6,8,10,12,14,16$. The $\pi/4$ no-reset and reset sweeps use $n=0,\ldots,4$. Both no-reset sweeps span the 
+first transfer and return, and share nonzero angles $\pi/4,\pi/2,3\pi/4,\pi$. The reset arm resets $B$ after every exchange block, including the last. 
+Each job measures all 189 distinct circuits in a different randomized order, with 512 shots per circuit. Three jobs yield 567 count records. 
+The analysis treats the jobs separately.
+
+\subsection{Calibrated block model}
+\label{sec:calibrated-model}
+The backend target's scheduled barriers give a duration of $0.440\,\mu\mathrm{s}$ per no-reset block and $2.124\,\mu\mathrm{s}$ per block including reset. 
+The jobs share one reported calibration snapshot. For $S$, $T_1=118.2\,\mu\mathrm{s}$ and $T_2=155.2\,\mu\mathrm{s}$. For 
+$B$, $T_1=99.2\,\mu\mathrm{s}$ and $T_2=112.1\,\mu\mathrm{s}$ \cite{ibmbackend}. I apply local amplitude damping and pure dephasing to both 
+qubits for half each scheduled no-reset block, apply the ideal exchange of angle $\theta$, and apply noise for the other half before repeating. 
+The rates are $T_1^{-1}$ and $T_2^{-1}-(2T_1)^{-1}$, so in the absence of exchange the excited population and the coherence fall at $T_1^{-1}$ and 
+$T_2^{-1}$, respectively. This model uses idle calibration times within a driven gate sequence and the reset curve uses 
+the ideal fresh-spectator channel.
+% It does not describe detailed pulse errors, preparation, reset infidelity, or readout. 
+
+
+\subsection{Tomography and uncertainty}
+With ideal readout, measuring only $S$ gives the same Pauli expectations as measuring both qubits and marginalizing over $B$. The three Pauli bases determine the
+central-qubit state $\hat\rho_S=(I+\hat r_X X+\hat r_Y Y+\hat r_Z Z)/2$ by linear inversion. For outcome-1 count $k_P$ in basis $P$ out of
+$N$ shots, $\hat r_P=1-2k_P/N$, so $\hat p_1=(1-\hat r_Z)/2=k_Z/N$. The trace
+distance for two physical qubit states is $D=\|\boldsymbol r_1-\boldsymbol r_2\|_2/2$ \cite{nielsen}. For trace-distance calculations I radially 
+project a linear-inversion vector outside the unit ball onto its surface. Population comparisons use the raw $Z$ counts. Model scores are the 
+mean trace distance to the predicted states and the mean absolute population error, with equal weight per preparation and sampled block count 
+within the specified window.
+
+Within each job, I independently resample each circuit's outcome-1 count from $\operatorname{Binomial}(N,k_P/N)$, repeat the reconstruction and 
+projection, and use 2,000 common draws for model scores and contrasts. Intervals are pointwise 95\% percentile intervals. They describe shot 
+variation conditional on each job and leave calibration uncertainty, correlated shots, and preparation and measurement errors unquantified. 
+The primary contrast $\Delta D=D(u=\pi)-D(u=\pi/2)$ uses the programmed endpoints in each sweep.
+
+\section{Results and Discussion}
+\begin{figure}[!ht]
+ \centering
+ \includegraphics[width=\linewidth]{../results/exchange.pdf}
+ \caption{(a) Central population for the excited input. 
+ (b) Trace distance between the reconstructed ground- and excited-input states. 
+ (c) Central $X$ expectation for the plus input. Markers are means over the three jobs and bars span the observed job range. 
+ Curves are ideal circuit predictions. The vertical line marks the first ideal transfer.}
+ \label{fig:hardware}
+\end{figure}
+
+\subsection{Distinguishability and phase at the first return}
+The central population falls and returns in both no-reset sweeps (Fig.~\ref{fig:hardware}a). The ground- and excited-input trajectories 
+approach each other at the first transfer and separate on the return. For $\theta=\pi/4$, the measured distance increases 
+from $0.041$--$0.046$ at $u=\pi/2$ to $0.796$--$0.821$ at $u=\pi$ across the three jobs. The smaller-angle sweep yields the same 
+qualitative pattern. In the reset control, the distance continues to fall and the excited population at the last block is $0.102$--$0.111$. 
+The pointwise shot intervals for $\Delta D$ are positive for both no-reset sweeps and negative for the reset control in every job 
+(Table~\ref{tab:witness}).
+
+\begin{table}[htb]
+ \centering
+ \input{../results/witness.tex}
+ \caption{Change $\Delta D$ from the first ideal transfer to the first return, with pointwise 95\% shot intervals, by job.}
+ \label{tab:witness}
+\end{table}
+
+The plus input tests the sign of the amplitude. At $u=\pi$, $\langle X\rangle$ ranges from $-0.738$ to $-0.672$ at $\pi/16$ and from 
+$-0.836$ to $-0.812$ at $\pi/4$. The reset control gives $+0.105$ to $+0.145$ (Fig.~\ref{fig:hardware}c). The negative signal in the 
+no-reset sweeps is consistent with the phase reversal in Eq.~\eqref{eq:channel}. The observed distinguishability increase tests the 
+predicted information return under the intended common exchange sequence. Preparation-dependent errors, readout and the different reset 
+duration limit inference about a device channel in isolation. The three inputs also leave a full process reconstruction undetermined.
+
+\subsection{Equal angles and fixed model scores}
+The no-reset sweeps implement the same ideal unitary at shared angles. At $u=\pi$, the smaller-angle population is lower in all three 
+jobs by $0.033$--$0.078$. Two of those three pointwise shot intervals exclude zero. At $u=\pi/2$ the smaller-angle population is higher 
+in all three jobs, with one interval excluding zero. The $\pi/4$ and $3\pi/4$ contrasts have intervals spanning zero in all jobs. 
+The shorter circuit uses four exchange blocks to reach $u=\pi$, compared with sixteen in the small-angle circuit. Elapsed time and gate count 
+change together, leaving their effects on the contrast unresolved.
+
+\begin{table}[htb]
+ \centering
+ \input{../results/scores.tex}
+ \caption{Fixed predictions scored against the three measured initial states. Scores are means of the three job-level values. 
+ The full window covers $0\le u\le\pi$ and the early window uses $0\le u\le\pi/4$ at the measured block counts.}
+ \label{tab:scores}
+\end{table}
+
+The scheduled local-noise model yields slightly smaller mean errors across the full window for both no-reset angles (Table~\ref{tab:scores}). 
+The change is modest relative to the remaining discrepancies, and the model leaves preparation and readout errors unmodeled. For example, 
+the reported central-qubit readout error was about $0.118$.
+
+Over the early window $u\le\pi/4$, TCL4 had a lower mean trace-distance error than TCL2 in each of the three jobs at both block angles.
+Computed from the unrounded scores, the average reductions were about $0.0025$ at $\theta=\pi/16$ and $0.0037$ at $\theta=\pi/4$.
+At both angles, the job-averaged TCL4 error was within $0.0003$ of the exact-exchange error (Table~\ref{tab:scores}).
+
+By the first return at $u=\pi$, the exact finite-spectator channel predicts a recovery of the excited-state population and of the distinguishability
+between the two inputs, along with a sign reversal of the plus-state $X$ expectation. Both no-reset sweeps exhibited all three features
+(Fig.~\ref{fig:hardware}).
+
+\section{Conclusion}
+Two no-reset exchange sweeps show the return of population, the recovery of distinguishability between two initial states, and the reversal of the 
+plus-state coherence. Resetting the spectator changes all three trajectories in the direction predicted by the fresh-spectator channel. 
+The equal-angle measurements show a smaller population return in the longer circuit. A model fixed by the scheduled durations and measured 
+idle-qubit times explains only part of the residual error. Independent readout, reset, and gate controls would be needed to resolve the 
+dominant hardware contribution.
+
+\vspace{1em}
+\noindent\textit{Data and code availability.} The counts, circuit and calibration metadata, acquisition scripts, and analysis notebook 
+are available at \href{https://github.com/Didgety/oqs-spec-bath}{github.com/Didgety/oqs-spec-bath}.
+
+\begin{acknowledgments}
+I thank Daniel Lidar for his lectures on open quantum systems and feedback on the project that motivated this experiment.
+\end{acknowledgments}
+
+\appendix
+\section{Time-local coefficients from the memory equation}
+\label{app:tcl}
+Expand $a=1+a_2+a_4+\dots$ in Eq.~\eqref{eq:volterra}, where $a_j$ is order $g^j$ and vanishes initially for $j>0$. 
+Substituting gives $\dot a_2=-C*1$ and $\dot a_4=-C*a_2$. At resonance,
+\begin{equation}
+ a_2=-\tfrac12 g^2t^2,\qquad a_4=\tfrac1{24}g^4t^4 .
+\end{equation}
+The logarithmic derivative through order $g^4$ is
+\begin{equation}
+ \frac{\dot a}{a}=\dot a_2+\dot a_4-a_2\dot a_2
+                =-g^2t-\tfrac13g^4t^3,
+\end{equation}
+which yields Eq.~\eqref{eq:rates}. The corresponding fourth-order integrated population prediction matches the exact population through 
+$u^4$. Its $u^6$ coefficient is zero, while the exact coefficient is $-2/45$. This gives a local check on the order of the approximation.
+
+\bibliography{references}
+\end{document}

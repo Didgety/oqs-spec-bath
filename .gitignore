@@ -1,0 +1,24 @@
+# Local submission and working materials
+/.private/
+/OQS_FP/
+/reanalysis/
+/.env
+/experiment/runs/
+/experiment/results/
+
+# Python environments and caches
+.venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.mplconfig/
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.blg
+/experiment/paper/*.bbl
+/experiment/paper/*Notes.bib
