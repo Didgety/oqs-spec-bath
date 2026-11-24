@@ -1,4 +1,4 @@
-# Reduced dynamics of a qubit coupled to a coherent spectator
+# Reduced Dynamics of a Qubit Coupled to a Coherent Spectator
 
 Jai Veilleux
 
