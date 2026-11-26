@@ -15,7 +15,7 @@ The analysis rebuilds the figures, tables, and per-job results under `experiment
 
 To rebuild the paper after regenerating the figures and tables, run `latexmk -pdf paper.tex` from `experiment/paper/` with REVTeX 4.2 and BibTeX available.
 
-The count records use local job ordinals and circuit labels. The circuit plan records logical settings, physical qubits, scheduled durations, and compiled operation counts. The calibration file records the data reported for execution. The run records with IBM job IDs and saved circuits stay in the local acquisition workspace.
+The count records use local job ordinals and circuit labels. The circuit plan records logical settings, physical qubits, scheduled durations, and compiled operation counts. The calibration file records the data reported for execution. Run records with IBM job IDs and saved circuits are saved locally and `.gitignore`d.
 
 ## Reading the code
 
@@ -74,9 +74,9 @@ python experiment/acquire.py collect new-run
 python experiment/analyze.py new-run
 ```
 
-Collection waits for the submitted jobs and saves one-bit counts and available execution-time calibration. Keep the entire run directory local. The analysis writes reconstructed states, four equal-angle population contrasts, trace-distance changes from transfer to return, and fixed-prediction scores. The state table retains raw linear inversion and flags estimates outside the Bloch ball. For trace distance, the analysis radially projects those estimates onto the Bloch ball and repeats the projection in every resample. Population scores use the Z-basis counts directly. It reports each repeat separately and uses a binomial shot bootstrap within the repeat. Repeat variation, preparation and readout bias, and uncertainty in calibration sit outside those intervals.
+Collection waits for the submitted jobs and saves one-bit counts and available execution-time calibration. The run directory is kept local though `.gitignore`. The analysis writes reconstructed states, four equal-angle population contrasts, trace-distance changes from transfer to return, and fixed-prediction scores. The state table retains raw linear inversion and flags estimates outside the Bloch sphere. For trace distance, the analysis radially projects those estimates onto the Bloch sphere and repeats the projection in every resample. Population scores use the Z-basis counts directly. It reports each repeat separately and uses a binomial shot bootstrap within the repeat. Repeat variation, preparation and readout bias, and uncertainty in calibration sit outside those intervals.
 
-The witness uses the fixed endpoints $\pi$/2 and $\pi$ and computes the change in trace distance between the ground- and excited-input trajectories. An increase is evidence of a distinguishability revival under the tested implementations. Interpreting it as a channel witness assumes the two preparations experience the same subsequent channel, including any correlated or preparation-dependent errors. The plus input is a separate check on the coherence prediction. The experiment does not reconstruct a complete process.
+The witness uses the fixed endpoints $\pi/2$ and $\pi$ and computes the change in trace distance between the ground- and excited-input trajectories. An increase is evidence of a distinguishability revival under the tested implementations. Interpreting the increase as a channel witness assumes that both preparations are followed by the same effective channel. The plus input is a separate check on the coherence prediction. Full single-qubit process tomography would also require a fourth input with a nonzero $Y$ component, such as $|+i\rangle$.
 
 ## Local simulation
 
